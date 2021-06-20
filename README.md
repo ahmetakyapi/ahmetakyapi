@@ -2,7 +2,7 @@
 
 ### Hi there, I'm Ahmet.
 
-### Jr. Software Engineer
+### Jr. Software Engineer.
 
 <font color="#7fffd4"> Some Coffee ☕ lots of < code /> </font>    
 
