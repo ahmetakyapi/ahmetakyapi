@@ -2,7 +2,7 @@
 
 ### Hi there, I'm Ahmet.
 
-### Jr. Software Engineer
+### Frontend Developer
 
 <font color="#7fffd4"> Some Coffee ☕ lots of < code /> </font>    
 
@@ -10,7 +10,6 @@
 
 [<img  width="30" src="https://unpkg.com/simple-icons@v4/icons/twitter.svg" align="left" />][twitter]
 [<img  width="30" src="https://unpkg.com/simple-icons@v4/icons/linkedin.svg" align="left" />][linkedin]
-[<img  width="30" src="https://unpkg.com/simple-icons@v4/icons/youtube.svg" align="left" />][youtube]
 
 <br />
 <br />
@@ -40,5 +39,4 @@
 
 [twitter]:https://twitter.com/ahmetakyapi
 [linkedin]:https://www.linkedin.com/in/ahmet-akyap%C4%B1-ba9911193
-[youtube]:https://www.youtube.com/channel/UCcZYtvVNDqqaNEGL3nehdiQ
 
