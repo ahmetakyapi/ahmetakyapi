@@ -19,6 +19,7 @@ from html import escape
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets")
 ICONS = json.load(open(os.path.join(os.path.dirname(__file__), "icons.json")))
+GLYPHS = json.load(open(os.path.join(os.path.dirname(__file__), "glyphs.json"), encoding="utf-8"))
 
 # ---------------------------------------------------------------- tokens ---
 # Palette follows ahmetakyapi.com (deep navy, ice ink, blue / violet / teal).
@@ -126,6 +127,21 @@ def header_row(w, index, label, right, delay=0.1):
 """
 
 
+def word(text, x, baseline, width, delay, tracking=0.0, stagger=.045, fill=INK, tilt=0):
+    """Outlined word (see outline.py): uniform scale to `width`, one glyph per element so it can stagger in."""
+    g = GLYPHS[text]
+    upm = g["upm"]
+    n = len(g["glyphs"])
+    track = tracking * upm
+    scale = width / (g["width"] + track * (n - 1))
+    out = []
+    for i, gl in enumerate(g["glyphs"]):
+        gx = x + (gl["x"] + track * i) * scale
+        out.append(f'<g class="glyph" style="animation-delay:{delay + i * stagger:.3f}s;--tilt:{tilt}deg">'
+                   f'<path transform="translate({gx:.1f} {baseline}) scale({scale:.5f} {-scale:.5f})" d="{gl["d"]}" fill="{fill}"/></g>')
+    return "".join(out), scale
+
+
 def write(name, content):
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
@@ -138,7 +154,13 @@ def hero():
     W, H = 1200, 700
     REVEAL = .35        # hero content starts
 
+    first, _ = word("Ahmet", 48, 300, 640, REVEAL + .1, tracking=-.035)
+    last, _ = word("Akyapı", 372, 540, 720, REVEAL + .3, stagger=.06, tilt=8)
+    last_mask, _ = word("Akyapı", 372, 540, 720, 0, stagger=0, fill="#fff")
+
     css = f"""
+.glyph{{transform-box:fill-box;transform-origin:0 100%;animation:glyph 1.25s {EXPO_OUT} both}}
+@keyframes glyph{{from{{transform:translateY(240px) rotate(var(--tilt,0deg))}}}}
 .blob{{transform-box:fill-box;transform-origin:center}}
 .b1{{animation:drift1 16s ease-in-out infinite alternate}}
 .b2{{animation:drift2 19s ease-in-out infinite alternate}}
@@ -152,12 +174,13 @@ def hero():
 
     defs = f"""
 <filter id="blur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="90"/></filter>
-<linearGradient id="sheen" gradientUnits="userSpaceOnUse" x1="330" y1="0" x2="1110" y2="0">
-  <stop offset="0" stop-color="{INK}"/><stop offset=".38" stop-color="{INK}"/>
-  <stop offset=".48" stop-color="{VIOLET}"/><stop offset=".55" stop-color="{TEAL}"/>
-  <stop offset=".66" stop-color="{INK}"/><stop offset="1" stop-color="{INK}"/>
-  <animateTransform attributeName="gradientTransform" type="translate" values="-900 0;900 0;900 0" keyTimes="0;.55;1" dur="7s" begin="{REVEAL + .8}s" repeatCount="indefinite"/>
+<linearGradient id="sheen" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="1100" y2="0" gradientTransform="translate(-900 0)">
+  <stop offset="0" stop-color="{TEAL}" stop-opacity="0"/><stop offset=".4" stop-color="{TEAL}" stop-opacity="0"/>
+  <stop offset=".47" stop-color="{VIOLET}" stop-opacity=".9"/><stop offset=".53" stop-color="{TEAL}" stop-opacity=".9"/>
+  <stop offset=".6" stop-color="{TEAL}" stop-opacity="0"/><stop offset="1" stop-color="{TEAL}" stop-opacity="0"/>
+  <animateTransform attributeName="gradientTransform" type="translate" values="-900 0;900 0;900 0" keyTimes="0;.55;1" dur="7s" begin="{REVEAL + 1.6}s" repeatCount="indefinite"/>
 </linearGradient>
+<mask id="lastmask"><g>{last_mask}</g></mask>
 <path id="ring" d="M 0,-74 a 74,74 0 1,1 0,148 a 74,74 0 1,1 0,-148"/>
 """
 
@@ -197,8 +220,12 @@ def hero():
 <circle class="pulse" cx="{W - 62}" cy="63" r="5" fill="{TEAL}"/>
 <rect x="56" y="92" width="{W - 112}" height="1" fill="{INK}" fill-opacity=".14" class="draw-x" {d(REVEAL)}/>
 
-{masked("t1", 0, 110, W, 240, f'<text x="44" y="310" class="sans" font-size="236" font-weight="700" fill="{INK}" textLength="650" lengthAdjust="spacingAndGlyphs">Ahmet</text>', cls="rise-xl", delay=REVEAL + .1)}
-{masked("t2", 0, 345, W, 270, f'<text x="350" y="560" class="serif" font-size="262" fill="url(#sheen)" textLength="760" lengthAdjust="spacingAndGlyphs">Akyapı</text>', cls="rise-xl", delay=REVEAL + .24)}
+<clipPath id="nm1"><rect x="0" y="100" width="{W}" height="216"/></clipPath>
+<clipPath id="nm2"><rect x="0" y="318" width="{W}" height="302"/></clipPath>
+<g clip-path="url(#nm1)">{first}</g>
+<g clip-path="url(#nm2)">{last}
+  <rect x="300" y="318" width="900" height="302" fill="url(#sheen)" mask="url(#lastmask)"/>
+</g>
 {para_svg}
 
 {masked("c1", 700, 150, 260, 26, f'<text x="720" y="170" class="mono" font-size="12" fill="{MUTED}">CURRENTLY</text>', delay=REVEAL + .5)}
@@ -228,61 +255,90 @@ def hero():
                           "Ahmet Akyapı — Full-Stack & AI Developer, Istanbul. Currently AI Developer at Nar Sistem Teknoloji."))
 
 
-# ================================================================== WORK ===
-WORK = [
-    ("Açılış Zili", "FINANCE", "#4ade80"),
-    ("DigyNotes", "PRODUCTIVITY", "#fbbf24"),
-    ("Derinay", "HEALTH", VIOLET),
-    ("ElevenForge", "GAME", "#a3e635"),
-    ("One Piece Hub", "WIKI", "#fb7185"),
-    ("Dungeon Mates", "GAME", "#fb923c"),
-    ("@ahmetakyapi/theme", "NPM", "#ff5f6d"),
-    ("@ahmetakyapi/ui", "NPM", "#ff5f6d"),
+# ============================================================== PROJECTS ===
+# Three featured products (same as ahmetakyapi.com), each an illustrated card.
+def motif_chart(c):
+    pts = [(0, 130), (30, 116), (60, 122), (90, 96), (120, 102), (150, 76), (180, 84), (210, 56), (240, 64), (270, 38), (300, 30)]
+    path = "M" + " L".join(f"{x} {y}" for x, y in pts)
+    candles = "".join(
+        f'<rect x="{12 + i * 30}" y="{170 - (16 + i * 37 % 24)}" width="10" height="{16 + i * 37 % 24}" rx="2" fill="{c}" opacity=".22" class="bob" style="animation-delay:{i * .18:.2f}s"/>'
+        for i in range(10))
+    return f"""<g transform="translate(30 30)">{candles}
+<path d="{path} L300 170 L0 170 Z" fill="url(#area)" opacity=".5"/>
+<path d="{path}" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" class="trace"/>
+<circle cx="300" cy="30" r="6" fill="{c}"/><circle cx="300" cy="30" r="6" fill="{c}" class="pulse"/></g>"""
+
+
+def motif_notes(c):
+    out = []
+    for i, (rot, dx, label) in enumerate([(-10, -92, "FILM"), (3, 0, "BOOK"), (12, 92, "GAME")]):
+        out.append(f"""<g transform="translate({180 + dx} 112) rotate({rot})"><g class="float" style="animation-delay:{i * .7:.1f}s">
+<rect x="-52" y="-66" width="104" height="132" rx="12" fill="{SURFACE}" stroke="{c}" stroke-opacity=".45"/>
+<rect x="-38" y="-52" width="76" height="58" rx="6" fill="{c}" opacity="{.14 + i * .07:.2f}"/>
+<text x="-38" y="26" class="mono" font-size="10" fill="{c}">{label}</text>
+<rect x="-38" y="36" width="64" height="5" rx="2.5" fill="{INK}" opacity=".18"/><rect x="-38" y="47" width="44" height="5" rx="2.5" fill="{INK}" opacity=".12"/>
+</g></g>""")
+    out.append("".join(
+        f'<path transform="translate({132 + i * 24} 214) scale(.4)" d="M0 -20 L6 -6 L21 -6 L9 3 L13 18 L0 9 L-13 18 L-9 3 L-21 -6 L-6 -6Z" fill="{c}" class="twinkle" style="animation-delay:{i * .25:.2f}s"/>'
+        for i in range(5)))
+    return "".join(out)
+
+
+def motif_calm(c):
+    rings = "".join(
+        f'<circle cx="180" cy="116" r="{16 + i * 19}" fill="none" stroke="{c}" stroke-opacity="{.6 - i * .1:.2f}" class="breathe" style="animation-delay:{i * .35:.2f}s"/>'
+        for i in range(5))
+    return f'{rings}<circle cx="180" cy="116" r="10" fill="{c}"/>'
+
+
+PROJECTS = [
+    ("aciliszili", "Açılış", " Zili", "FINANCE", "US markets, tracked in Turkish.", "#4ade80", motif_chart),
+    ("digynotes", "Digy", "Notes", "PRODUCTIVITY", "Films, books, games and places.", "#fbbf24", motif_notes),
+    ("derinay", "Derin", "ay", "HEALTH", "A calm panel for a clinic.", VIOLET, motif_calm),
 ]
 
 
-def work():
-    """One compact index of selected products and packages, two columns."""
-    W, H = 1200, 400
-    rows_per_col = 4
-    rowh = 58
-    top = 108
-    colw = (W - 112 - 40) / 2
-    out = []
-    css = ""
-    for c in range(2):
-        x0 = 56 + c * (colw + 40)
-        # a soft "hover" highlight that steps through the rows on a loop
-        kf = []
-        for r in range(rows_per_col):
-            p0, p1 = r * 25, r * 25 + 20
-            kf.append(f"{p0}%,{p1}%{{transform:translateY({r * rowh}px)}}")
-        kf.append(f"100%{{transform:translateY(0)}}")
-        css += f".hl{c}{{animation:hl{c} 10s {EXPO_IN_OUT} {1.6 + c * 1.25:.2f}s infinite both}}@keyframes hl{c}{{{''.join(kf)}}}"
-        out.append(f'<g class="fade" {d(1.4 + c * .2)}><g class="hl{c}"><rect x="{x0 - 12:.1f}" y="{top}" width="{colw + 24:.1f}" height="{rowh}" rx="10" fill="{INK}" fill-opacity=".045"/></g></g>')
-        for r in range(rows_per_col):
-            i = c * rows_per_col + r
-            name, kind, color = WORK[i]
-            y = top + r * rowh
-            t = .25 + i * .06
-            out.append(f'<rect x="{x0:.1f}" y="{y + rowh - 1}" width="{colw:.1f}" height="1" fill="{INK}" fill-opacity=".12" class="draw-x" {d(t)}/>')
-            if name.startswith("@"):
-                label = f'<tspan fill="{MUTED}">@ahmetakyapi/</tspan><tspan class="serif" font-size="30" fill="{INK}">{escape(name.split("/")[1])}</tspan>'
-            else:
-                label = escape(name)
-            out.append(masked(f"r{i}", x0 - 4, y, colw + 8, rowh - 2,
-                              f'<text x="{x0:.1f}" y="{y + 38}" class="mono" font-size="11" fill="{MUTED}">{i + 1:02d}</text>'
-                              f'<circle cx="{x0 + 42:.1f}" cy="{y + 34}" r="4" fill="{color}"/>'
-                              f'<text x="{x0 + 60:.1f}" y="{y + 40}" class="sans" font-size="25" fill="{INK}" letter-spacing="-.01em">{label}</text>'
-                              f'<text x="{x0 + colw - 30:.1f}" y="{y + 37}" text-anchor="end" class="mono" font-size="11" fill="{MUTED}">{kind}</text>'
-                              f'<path transform="translate({x0 + colw - 10:.1f} {y + 33})" d="M-5 5 L5 -5 M-2 -5 H5 V2" stroke="{color}" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
-                              delay=t + .05))
-    body = f"""
-{header_row(W, 1, "SELECTED WORK", "13 PRODUCTS · 2 NPM PACKAGES")}
-{"".join(out)}
-{masked("all", 0, 350, W, 34, f'<text x="56" y="374" class="mono" font-size="12" fill="{TEAL}">ALL PROJECTS → AHMETAKYAPI.COM</text><text x="{W - 56}" y="374" text-anchor="end" class="mono" font-size="12" fill="{MUTED}">FINANCE · HEALTH · GAMES · TOOLS</text>', delay=.9)}
+def project(i, slug, a, b, kind, line, c, motif):
+    W, H = 400, 440
+    css = f"""
+.trace{{animation:trace 4.5s {EXPO_IN_OUT} infinite}}
+@keyframes trace{{0%{{stroke-dashoffset:1}}55%,85%{{stroke-dashoffset:0}}100%{{stroke-dashoffset:-1}}}}
+.bob{{transform-box:fill-box;transform-origin:50% 100%;animation:bob 2.2s ease-in-out infinite alternate}}
+@keyframes bob{{to{{transform:scaleY(.55)}}}}
+.float{{animation:float 3.6s ease-in-out infinite alternate}}
+@keyframes float{{to{{transform:translateY(-10px)}}}}
+.twinkle{{transform-box:fill-box;transform-origin:center;animation:twinkle 2.5s ease-in-out infinite}}
+@keyframes twinkle{{50%{{transform:scale(.6);opacity:.4}}}}
+.breathe{{transform-box:fill-box;transform-origin:center;animation:breathe 5s ease-in-out infinite}}
+@keyframes breathe{{50%{{transform:scale(1.18);stroke-opacity:.1}}}}
+.arrow{{animation:arrow 2.6s {EXPO_IN_OUT} infinite}}
+@keyframes arrow{{0%,40%{{transform:translate(0,0)}}50%{{transform:translate(16px,-16px)}}50.01%{{transform:translate(-16px,16px)}}60%,100%{{transform:translate(0,0)}}}}
 """
-    write("work.svg", svg(W, H, body, css, title="Selected work: " + ", ".join(n for n, _, _ in WORK)))
+    defs = f"""
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c}" stop-opacity=".5"/><stop offset="1" stop-color="{c}" stop-opacity="0"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="{c}" stop-opacity=".2"/><stop offset="1" stop-color="{c}" stop-opacity="0"/></radialGradient>
+<clipPath id="stage"><rect x="20" y="20" width="360" height="250" rx="18"/></clipPath>
+"""
+    t = .2 + i * .15
+    body = f"""
+<rect width="{W}" height="{H}" fill="url(#glow)"/>
+<g clip-path="url(#stage)" class="fade" {d(t)}>
+  <rect x="20" y="20" width="360" height="250" fill="{BG}" fill-opacity=".55"/>
+  <g transform="translate(20 20)">{motif(c)}</g>
+</g>
+<rect x="20.5" y="20.5" width="359" height="249" rx="18" fill="none" stroke="{INK}" stroke-opacity=".08"/>
+{masked("k", 0, 288, W, 26, f'<text x="28" y="306" class="mono" font-size="12" fill="{c}">({i + 1:02d})  <tspan fill="{MUTED}">{kind}</tspan></text>', delay=t + .2)}
+{masked("t", 0, 314, W, 66, f'<text x="25" y="362" class="sans" font-size="46" font-weight="600" letter-spacing="-.03em" fill="{INK}">{escape(a)}<tspan class="serif" font-weight="400" fill="{c}">{escape(b)}</tspan></text>', cls="rise", delay=t + .28)}
+{masked("l", 0, 380, W, 30, f'<text x="28" y="402" class="sans" font-size="19" fill="{MUTED}">{escape(line)}</text>', delay=t + .38)}
+<g transform="translate({W - 50} 340)">
+  <g class="pop" {d(t + .5)}>
+    <circle r="22" fill="{c}"/>
+    <clipPath id="ac"><circle r="22"/></clipPath>
+    <g clip-path="url(#ac)"><g class="arrow" style="animation-delay:{1.4 + i * .4:.1f}s"><path d="M-6 6 L6 -6 M-3 -6 H6 V3" stroke="{BG}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+  </g>
+</g>
+"""
+    write(f"project-{slug}.svg", svg(W, H, body, css, defs, title=f"{a}{b} — {line}"))
 
 
 # =============================================================== BUTTONS ===
@@ -331,6 +387,7 @@ def button(i, slug, label, ic):
 if __name__ == "__main__":
     print("Generating README assets →")
     hero()
-    work()
+    for i, pr in enumerate(PROJECTS):
+        project(i, *pr)
     for i, b in enumerate(BUTTONS):
         button(i, *b)

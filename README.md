@@ -4,9 +4,11 @@
 
 <br/>
 
-<a href="https://ahmetakyapi.com">
-  <img src="assets/work.svg" width="100%" alt="Selected work: Açılış Zili, DigyNotes, Derinay, ElevenForge, One Piece Hub, Dungeon Mates, @ahmetakyapi/theme, @ahmetakyapi/ui" />
-</a>
+<p align="center">
+  <a href="https://aciliszili.com"><img src="assets/project-aciliszili.svg" width="32%" alt="Açılış Zili — US markets, tracked in Turkish" /></a>
+  <a href="https://digy-notes.vercel.app"><img src="assets/project-digynotes.svg" width="32%" alt="DigyNotes — films, books, games and places" /></a>
+  <a href="https://derinay.vercel.app"><img src="assets/project-derinay.svg" width="32%" alt="Derinay — a calm panel for a clinic" /></a>
+</p>
 
 <p align="center">
   <a href="https://ahmetakyapi.com"><img src="assets/btn-website.svg" height="48" alt="Website" /></a>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="0 0 400 440" role="img" aria-label="Açılış Zili — US markets, tracked in Turkish.">
+<title>Açılış Zili — US markets, tracked in Turkish.</title>
+<defs>
+<clipPath id="card"><rect width="400" height="440" rx="28"/></clipPath>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>
+<feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0"/>
+</filter>
+
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80" stop-opacity=".5"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#4ade80" stop-opacity=".2"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></radialGradient>
+<clipPath id="stage"><rect x="20" y="20" width="360" height="250" rx="18"/></clipPath>
+
+</defs>
+<style>
+.sans{font-family:'Inter','SF Pro Display','Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif}
+.serif{font-family:'Instrument Serif','Playfair Display','Iowan Old Style',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
+.mono{font-family:'JetBrains Mono','SF Mono',ui-monospace,Menlo,Consolas,'DejaVu Sans Mono',monospace;letter-spacing:.12em}
+.rise{animation:rise 1.1s cubic-bezier(.16,1,.3,1) both}
+.rise-xl{animation:rise-xl 1.3s cubic-bezier(.16,1,.3,1) both}
+.fade{animation:fade 1s ease both}
+.fade-up{animation:fade-up 1s cubic-bezier(.16,1,.3,1) both}
+.draw-x{transform-box:fill-box;transform-origin:0 50%;animation:draw-x 1.4s cubic-bezier(.76,0,.24,1) both}
+.draw-y{transform-box:fill-box;transform-origin:50% 0;animation:draw-y 1.4s cubic-bezier(.76,0,.24,1) both}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .9s cubic-bezier(.16,1,.3,1) both}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 18s linear infinite}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes rise{from{transform:translateY(80px)}}
+@keyframes rise-xl{from{transform:translateY(260px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}}
+@keyframes draw-x{from{transform:scaleX(0)}}
+@keyframes draw-y{from{transform:scaleY(0)}}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes blink{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+.trace{animation:trace 4.5s cubic-bezier(.76,0,.24,1) infinite}
+@keyframes trace{0%{stroke-dashoffset:1}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-1}}
+.bob{transform-box:fill-box;transform-origin:50% 100%;animation:bob 2.2s ease-in-out infinite alternate}
+@keyframes bob{to{transform:scaleY(.55)}}
+.float{animation:float 3.6s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(-10px)}}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 2.5s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(.6);opacity:.4}}
+.breathe{transform-box:fill-box;transform-origin:center;animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.18);stroke-opacity:.1}}
+.arrow{animation:arrow 2.6s cubic-bezier(.76,0,.24,1) infinite}
+@keyframes arrow{0%,40%{transform:translate(0,0)}50%{transform:translate(16px,-16px)}50.01%{transform:translate(-16px,16px)}60%,100%{transform:translate(0,0)}}
+</style>
+<g clip-path="url(#card)">
+<rect width="400" height="440" fill="#050a14"/>
+
+<rect width="400" height="440" fill="url(#glow)"/>
+<g clip-path="url(#stage)" class="fade" style="animation-delay:0.20s">
+  <rect x="20" y="20" width="360" height="250" fill="#050a14" fill-opacity=".55"/>
+  <g transform="translate(20 20)"><g transform="translate(30 30)"><rect x="12" y="154" width="10" height="16" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.00s"/><rect x="42" y="141" width="10" height="29" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.18s"/><rect x="72" y="152" width="10" height="18" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.36s"/><rect x="102" y="139" width="10" height="31" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.54s"/><rect x="132" y="150" width="10" height="20" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.72s"/><rect x="162" y="137" width="10" height="33" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:0.90s"/><rect x="192" y="148" width="10" height="22" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:1.08s"/><rect x="222" y="135" width="10" height="35" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:1.26s"/><rect x="252" y="146" width="10" height="24" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:1.44s"/><rect x="282" y="133" width="10" height="37" rx="2" fill="#4ade80" opacity=".22" class="bob" style="animation-delay:1.62s"/>
+<path d="M0 130 L30 116 L60 122 L90 96 L120 102 L150 76 L180 84 L210 56 L240 64 L270 38 L300 30 L300 170 L0 170 Z" fill="url(#area)" opacity=".5"/>
+<path d="M0 130 L30 116 L60 122 L90 96 L120 102 L150 76 L180 84 L210 56 L240 64 L270 38 L300 30" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" class="trace"/>
+<circle cx="300" cy="30" r="6" fill="#4ade80"/><circle cx="300" cy="30" r="6" fill="#4ade80" class="pulse"/></g></g>
+</g>
+<rect x="20.5" y="20.5" width="359" height="249" rx="18" fill="none" stroke="#e3e9f0" stroke-opacity=".08"/>
+<clipPath id="k"><rect x="0" y="288" width="400" height="26"/></clipPath><g clip-path="url(#k)"><g class="rise" style="animation-delay:0.40s"><text x="28" y="306" class="mono" font-size="12" fill="#4ade80">(01)  <tspan fill="#7d8aa0">FINANCE</tspan></text></g></g>
+<clipPath id="t"><rect x="0" y="314" width="400" height="66"/></clipPath><g clip-path="url(#t)"><g class="rise" style="animation-delay:0.48s"><text x="25" y="362" class="sans" font-size="46" font-weight="600" letter-spacing="-.03em" fill="#e3e9f0">Açılış<tspan class="serif" font-weight="400" fill="#4ade80"> Zili</tspan></text></g></g>
+<clipPath id="l"><rect x="0" y="380" width="400" height="30"/></clipPath><g clip-path="url(#l)"><g class="rise" style="animation-delay:0.58s"><text x="28" y="402" class="sans" font-size="19" fill="#7d8aa0">US markets, tracked in Turkish.</text></g></g>
+<g transform="translate(350 340)">
+  <g class="pop" style="animation-delay:0.70s">
+    <circle r="22" fill="#4ade80"/>
+    <clipPath id="ac"><circle r="22"/></clipPath>
+    <g clip-path="url(#ac)"><g class="arrow" style="animation-delay:1.4s"><path d="M-6 6 L6 -6 M-3 -6 H6 V3" stroke="#050a14" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+  </g>
+</g>
+
+<rect width="400" height="440" filter="url(#grain)" opacity=".05"/>
+</g>
+<rect x=".5" y=".5" width="399" height="439" rx="28" fill="none" stroke="#e3e9f0" stroke-opacity=".08"/>
+</svg>
