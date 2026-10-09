@@ -223,7 +223,7 @@ def hero():
 {grid}
 
 {masked("m1", 0, 40, 400, 40, f'<text x="56" y="68" class="mono" font-size="13" fill="{MUTED}">AHMET AKYAPI <tspan fill="{TEAL}">©2026</tspan></text>', delay=REVEAL)}
-{masked("m2", 400, 40, 400, 40, f'<text x="600" y="68" text-anchor="middle" class="mono" font-size="13" fill="{MUTED}">İSTANBUL · TÜRKİYE</text>', delay=REVEAL + .08)}
+{masked("m2", 400, 40, 400, 40, f'<text x="600" y="68" text-anchor="middle" class="mono" font-size="13" fill="{MUTED}">ISTANBUL</text>', delay=REVEAL + .08)}
 {masked("m3", 800, 40, 400, 40, f'<text x="{W - 80}" y="68" text-anchor="end" class="mono" font-size="13" fill="{INK}">BUILDING WITH AI AGENTS</text>', delay=REVEAL + .16)}
 <g class="pop" {d(REVEAL + .4)}><circle cx="{W - 62}" cy="63" r="5" fill="{TEAL}"/></g>
 <circle class="pulse" cx="{W - 62}" cy="63" r="5" fill="{TEAL}"/>
