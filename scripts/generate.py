@@ -255,92 +255,6 @@ def hero():
                           "Ahmet Akyapı — Full-Stack & AI Developer, Istanbul. Currently AI Developer at Nar Sistem Teknoloji."))
 
 
-# ============================================================== PROJECTS ===
-# Three featured products (same as ahmetakyapi.com), each an illustrated card.
-def motif_chart(c):
-    pts = [(0, 130), (30, 116), (60, 122), (90, 96), (120, 102), (150, 76), (180, 84), (210, 56), (240, 64), (270, 38), (300, 30)]
-    path = "M" + " L".join(f"{x} {y}" for x, y in pts)
-    candles = "".join(
-        f'<rect x="{12 + i * 30}" y="{170 - (16 + i * 37 % 24)}" width="10" height="{16 + i * 37 % 24}" rx="2" fill="{c}" opacity=".22" class="bob" style="animation-delay:{i * .18:.2f}s"/>'
-        for i in range(10))
-    return f"""<g transform="translate(30 30)">{candles}
-<path d="{path} L300 170 L0 170 Z" fill="url(#area)" opacity=".5"/>
-<path d="{path}" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" class="trace"/>
-<circle cx="300" cy="30" r="6" fill="{c}"/><circle cx="300" cy="30" r="6" fill="{c}" class="pulse"/></g>"""
-
-
-def motif_notes(c):
-    out = []
-    for i, (rot, dx, label) in enumerate([(-10, -92, "FILM"), (3, 0, "BOOK"), (12, 92, "GAME")]):
-        out.append(f"""<g transform="translate({180 + dx} 112) rotate({rot})"><g class="float" style="animation-delay:{i * .7:.1f}s">
-<rect x="-52" y="-66" width="104" height="132" rx="12" fill="{SURFACE}" stroke="{c}" stroke-opacity=".45"/>
-<rect x="-38" y="-52" width="76" height="58" rx="6" fill="{c}" opacity="{.14 + i * .07:.2f}"/>
-<text x="-38" y="26" class="mono" font-size="10" fill="{c}">{label}</text>
-<rect x="-38" y="36" width="64" height="5" rx="2.5" fill="{INK}" opacity=".18"/><rect x="-38" y="47" width="44" height="5" rx="2.5" fill="{INK}" opacity=".12"/>
-</g></g>""")
-    out.append("".join(
-        f'<path transform="translate({132 + i * 24} 214) scale(.4)" d="M0 -20 L6 -6 L21 -6 L9 3 L13 18 L0 9 L-13 18 L-9 3 L-21 -6 L-6 -6Z" fill="{c}" class="twinkle" style="animation-delay:{i * .25:.2f}s"/>'
-        for i in range(5)))
-    return "".join(out)
-
-
-def motif_calm(c):
-    rings = "".join(
-        f'<circle cx="180" cy="116" r="{16 + i * 19}" fill="none" stroke="{c}" stroke-opacity="{.6 - i * .1:.2f}" class="breathe" style="animation-delay:{i * .35:.2f}s"/>'
-        for i in range(5))
-    return f'{rings}<circle cx="180" cy="116" r="10" fill="{c}"/>'
-
-
-PROJECTS = [
-    ("aciliszili", "Açılış", " Zili", "FINANCE", "US markets, tracked in Turkish.", "#4ade80", motif_chart),
-    ("digynotes", "Digy", "Notes", "PRODUCTIVITY", "Films, books, games and places.", "#fbbf24", motif_notes),
-    ("derinay", "Derin", "ay", "HEALTH", "A calm panel for a clinic.", VIOLET, motif_calm),
-]
-
-
-def project(i, slug, a, b, kind, line, c, motif):
-    W, H = 400, 440
-    css = f"""
-.trace{{animation:trace 4.5s {EXPO_IN_OUT} infinite}}
-@keyframes trace{{0%{{stroke-dashoffset:1}}55%,85%{{stroke-dashoffset:0}}100%{{stroke-dashoffset:-1}}}}
-.bob{{transform-box:fill-box;transform-origin:50% 100%;animation:bob 2.2s ease-in-out infinite alternate}}
-@keyframes bob{{to{{transform:scaleY(.55)}}}}
-.float{{animation:float 3.6s ease-in-out infinite alternate}}
-@keyframes float{{to{{transform:translateY(-10px)}}}}
-.twinkle{{transform-box:fill-box;transform-origin:center;animation:twinkle 2.5s ease-in-out infinite}}
-@keyframes twinkle{{50%{{transform:scale(.6);opacity:.4}}}}
-.breathe{{transform-box:fill-box;transform-origin:center;animation:breathe 5s ease-in-out infinite}}
-@keyframes breathe{{50%{{transform:scale(1.18);stroke-opacity:.1}}}}
-.arrow{{animation:arrow 2.6s {EXPO_IN_OUT} infinite}}
-@keyframes arrow{{0%,40%{{transform:translate(0,0)}}50%{{transform:translate(16px,-16px)}}50.01%{{transform:translate(-16px,16px)}}60%,100%{{transform:translate(0,0)}}}}
-"""
-    defs = f"""
-<linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c}" stop-opacity=".5"/><stop offset="1" stop-color="{c}" stop-opacity="0"/></linearGradient>
-<radialGradient id="glow" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="{c}" stop-opacity=".2"/><stop offset="1" stop-color="{c}" stop-opacity="0"/></radialGradient>
-<clipPath id="stage"><rect x="20" y="20" width="360" height="250" rx="18"/></clipPath>
-"""
-    t = .2 + i * .15
-    body = f"""
-<rect width="{W}" height="{H}" fill="url(#glow)"/>
-<g clip-path="url(#stage)" class="fade" {d(t)}>
-  <rect x="20" y="20" width="360" height="250" fill="{BG}" fill-opacity=".55"/>
-  <g transform="translate(20 20)">{motif(c)}</g>
-</g>
-<rect x="20.5" y="20.5" width="359" height="249" rx="18" fill="none" stroke="{INK}" stroke-opacity=".08"/>
-{masked("k", 0, 288, W, 26, f'<text x="28" y="306" class="mono" font-size="12" fill="{c}">({i + 1:02d})  <tspan fill="{MUTED}">{kind}</tspan></text>', delay=t + .2)}
-{masked("t", 0, 314, W, 66, f'<text x="25" y="362" class="sans" font-size="46" font-weight="600" letter-spacing="-.03em" fill="{INK}">{escape(a)}<tspan class="serif" font-weight="400" fill="{c}">{escape(b)}</tspan></text>', cls="rise", delay=t + .28)}
-{masked("l", 0, 380, W, 30, f'<text x="28" y="402" class="sans" font-size="19" fill="{MUTED}">{escape(line)}</text>', delay=t + .38)}
-<g transform="translate({W - 50} 340)">
-  <g class="pop" {d(t + .5)}>
-    <circle r="22" fill="{c}"/>
-    <clipPath id="ac"><circle r="22"/></clipPath>
-    <g clip-path="url(#ac)"><g class="arrow" style="animation-delay:{1.4 + i * .4:.1f}s"><path d="M-6 6 L6 -6 M-3 -6 H6 V3" stroke="{BG}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
-  </g>
-</g>
-"""
-    write(f"project-{slug}.svg", svg(W, H, body, css, defs, title=f"{a}{b} — {line}"))
-
-
 # =============================================================== BUTTONS ===
 def globe(c):
     return (f'<g fill="none" stroke="{c}" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/>'
@@ -387,7 +301,5 @@ def button(i, slug, label, ic):
 if __name__ == "__main__":
     print("Generating README assets →")
     hero()
-    for i, pr in enumerate(PROJECTS):
-        project(i, *pr)
     for i, b in enumerate(BUTTONS):
         button(i, *b)
