@@ -127,8 +127,11 @@ def header_row(w, index, label, right, delay=0.1):
 """
 
 
-def word(text, x, baseline, width, delay, tracking=0.0, stagger=.045, fill=INK, tilt=0):
-    """Outlined word (see outline.py): uniform scale to `width`, one glyph per element so it can stagger in."""
+def word(text, x, baseline, width, delay, tracking=0.0, stagger=.07, fill=INK, animate=True):
+    """Outlined word (see outline.py), uniformly scaled to `width`.
+
+    Each glyph first draws its outline, then fills in, staggered left to right.
+    """
     g = GLYPHS[text]
     upm = g["upm"]
     n = len(g["glyphs"])
@@ -137,8 +140,13 @@ def word(text, x, baseline, width, delay, tracking=0.0, stagger=.045, fill=INK, 
     out = []
     for i, gl in enumerate(g["glyphs"]):
         gx = x + (gl["x"] + track * i) * scale
-        out.append(f'<g class="glyph" style="animation-delay:{delay + i * stagger:.3f}s;--tilt:{tilt}deg">'
-                   f'<path transform="translate({gx:.1f} {baseline}) scale({scale:.5f} {-scale:.5f})" d="{gl["d"]}" fill="{fill}"/></g>')
+        tf = f'translate({gx:.1f} {baseline}) scale({scale:.5f} {-scale:.5f})'
+        if animate:
+            t = delay + i * stagger
+            out.append(f'<path class="ink" transform="{tf}" d="{gl["d"]}" fill="{fill}" stroke="{fill}" stroke-width="1.2" '
+                       f'vector-effect="non-scaling-stroke" pathLength="1" style="animation-delay:{t:.3f}s,{t + .75:.3f}s"/>')
+        else:
+            out.append(f'<path transform="{tf}" d="{gl["d"]}" fill="{fill}"/>')
     return "".join(out), scale
 
 
@@ -154,13 +162,14 @@ def hero():
     W, H = 1200, 700
     REVEAL = .35        # hero content starts
 
-    first, _ = word("Ahmet", 48, 300, 640, REVEAL + .1, tracking=-.035)
-    last, _ = word("Akyapı", 372, 540, 720, REVEAL + .3, stagger=.06, tilt=8)
-    last_mask, _ = word("Akyapı", 372, 540, 720, 0, stagger=0, fill="#fff")
+    first, _ = word("Ahmet", 48, 300, 640, REVEAL, tracking=-.035)
+    last, _ = word("Akyapı", 372, 540, 720, REVEAL + .45)
+    last_mask, _ = word("Akyapı", 372, 540, 720, 0, fill="#fff", animate=False)
 
     css = f"""
-.glyph{{transform-box:fill-box;transform-origin:0 100%;animation:glyph 1.25s {EXPO_OUT} both}}
-@keyframes glyph{{from{{transform:translateY(240px) rotate(var(--tilt,0deg))}}}}
+.ink{{stroke-dasharray:1;animation:ink-draw 1.6s {EXPO_IN_OUT} both,ink-fill 1.1s ease both}}
+@keyframes ink-draw{{from{{stroke-dashoffset:1}}}}
+@keyframes ink-fill{{from{{fill-opacity:0}}}}
 .blob{{transform-box:fill-box;transform-origin:center}}
 .b1{{animation:drift1 16s ease-in-out infinite alternate}}
 .b2{{animation:drift2 19s ease-in-out infinite alternate}}
@@ -214,16 +223,14 @@ def hero():
 {grid}
 
 {masked("m1", 0, 40, 400, 40, f'<text x="56" y="68" class="mono" font-size="13" fill="{MUTED}">AHMET AKYAPI <tspan fill="{TEAL}">©2026</tspan></text>', delay=REVEAL)}
-{masked("m2", 400, 40, 400, 40, f'<text x="600" y="68" text-anchor="middle" class="mono" font-size="13" fill="{MUTED}">41.0082° N — 28.9784° E</text>', delay=REVEAL + .08)}
+{masked("m2", 400, 40, 400, 40, f'<text x="600" y="68" text-anchor="middle" class="mono" font-size="13" fill="{MUTED}">İSTANBUL · TÜRKİYE</text>', delay=REVEAL + .08)}
 {masked("m3", 800, 40, 400, 40, f'<text x="{W - 80}" y="68" text-anchor="end" class="mono" font-size="13" fill="{INK}">BUILDING WITH AI AGENTS</text>', delay=REVEAL + .16)}
 <g class="pop" {d(REVEAL + .4)}><circle cx="{W - 62}" cy="63" r="5" fill="{TEAL}"/></g>
 <circle class="pulse" cx="{W - 62}" cy="63" r="5" fill="{TEAL}"/>
 <rect x="56" y="92" width="{W - 112}" height="1" fill="{INK}" fill-opacity=".14" class="draw-x" {d(REVEAL)}/>
 
-<clipPath id="nm1"><rect x="0" y="100" width="{W}" height="216"/></clipPath>
-<clipPath id="nm2"><rect x="0" y="318" width="{W}" height="302"/></clipPath>
-<g clip-path="url(#nm1)">{first}</g>
-<g clip-path="url(#nm2)">{last}
+<g>{first}</g>
+<g>{last}
   <rect x="300" y="318" width="900" height="302" fill="url(#sheen)" mask="url(#lastmask)"/>
 </g>
 {para_svg}
