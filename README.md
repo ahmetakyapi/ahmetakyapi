@@ -9,7 +9,6 @@
   <a href="mailto:ahmetakyapii@gmail.com"><img src="assets/btn-email.svg" height="48" alt="Email" /></a>
   <a href="https://x.com/ahmetakyapi"><img src="assets/btn-x.svg" height="48" alt="X" /></a>
   <a href="https://www.linkedin.com/in/ahmetakyapi"><img src="assets/btn-linkedin.svg" height="48" alt="LinkedIn" /></a>
-  <a href="https://github.com/ahmetakyapi?tab=repositories"><img src="assets/btn-github.svg" height="48" alt="GitHub repositories" /></a>
   <a href="https://www.npmjs.com/package/@ahmetakyapi/ui"><img src="assets/btn-npm.svg" height="48" alt="npm" /></a>
 </p>
 
