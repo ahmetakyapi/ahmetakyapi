@@ -446,7 +446,6 @@ def work_header():
 {masked("h", 0, 112, W, 170, f'<text x="50" y="250" class="sans" font-size="150" font-weight="700" letter-spacing="-.05em" fill="{INK}" textLength="560" lengthAdjust="spacingAndGlyphs">Selected</text>', cls="rise-xl", delay=.15)}
 {masked("h2", 0, 112, W, 170, f'<text x="640" y="250" class="serif" font-size="164" fill="{TEAL}" textLength="330" lengthAdjust="spacingAndGlyphs">work</text>', cls="rise-xl", delay=.28)}
 {masked("n", 980, 130, 180, 60, f'<text x="1000" y="170" class="mono" font-size="22" fill="{MUTED}">(06)</text>', delay=.5)}
-{masked("y", 980, 210, 180, 40, f'<text x="1000" y="244" class="mono" font-size="12" fill="{MUTED}">2024 — 2026</text>', delay=.6)}
 """
     write("work.svg", svg(W, H, body, title="Selected work — six featured products out of thirteen."))
 
@@ -466,7 +465,7 @@ def motif_chart(c):
 <path d="{path} L440 160 L0 160 Z" fill="url(#area)" opacity=".5"/>
 <path d="{path}" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" class="trace"/>
 <circle cx="440" cy="8" r="6" fill="{c}"/><circle cx="440" cy="8" r="6" fill="{c}" class="pulse"/>
-<text x="440" y="-2" dx="-14" text-anchor="end" class="mono" font-size="12" fill="{c}">+4.2%  09:30 ET</text>
+<text x="440" y="-2" dx="-14" text-anchor="end" class="mono" font-size="12" fill="{c}">US MARKETS · DAILY BULLETIN</text>
 </g>"""
 
 
@@ -497,7 +496,7 @@ def motif_pitch(c):
 <path id="ballpath" d="M180 150 C 240 40, 330 160, 420 70 S 500 120, 470 99" fill="none"/>
 {"".join(f'<circle cx="{x}" cy="{y}" r="6" fill="{c}" opacity=".85" class="float" style="animation-delay:{i * .4:.1f}s"/>' for i, (x, y) in enumerate([(180, 150), (260, 70), (330, 140), (420, 70), (380, 40), (220, 120)]))}
 <circle r="7" fill="{INK}"><animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#ballpath"/></animateMotion></circle>
-<text x="490" y="204" text-anchor="end" class="mono" font-size="12" fill="{c}">90'  ·  2 — 1</text>"""
+<text x="490" y="204" text-anchor="end" class="mono" font-size="12" fill="{c}">16 FRIENDS · 1 LEAGUE</text>"""
 
 
 def motif_waves(c):
@@ -524,7 +523,7 @@ def motif_dungeon(c):
 
 
 PROJECTS = [
-    ("aciliszili", 1, "Açılış", " Zili", "FINANCE · 2026", "#4ade80", motif_chart,
+    ("aciliszili", 1, "Açılış", " Zili", "FINANCE · DAILY", "#4ade80", motif_chart,
      ["US markets, tracked in Turkish: earnings calendar,", "analyses, macro data and a daily bulletin."],
      ["Next.js 16", "Postgres", "AI agents"]),
     ("digynotes", 2, "Digy", "Notes", "PRODUCTIVITY", "#fbbf24", motif_notes,
@@ -606,6 +605,71 @@ def project_card(slug, idx, a, b, kind, c, motif, desc, tags):
 <rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="27" fill="none" stroke="url(#border)" stroke-width="1.5" opacity=".7"/>
 """
     write(f"project-{slug}.svg", svg(W, H, body, css, defs, title=f"{a}{b} — {' '.join(desc)} ({', '.join(tags)})"))
+
+
+# ================================================================== NPM ===
+def motif_theme(c):
+    sw = [BG, SURFACE, BLUE, VIOLET, TEAL]
+    out = []
+    for i, col in enumerate(sw):
+        out.append(f'<g transform="translate({400 + (i % 3) * 56} {92 + (i // 3) * 56})"><g class="pop" {d(.5 + i * .08)}>'
+                   f'<rect x="-22" y="-22" width="44" height="44" rx="12" fill="{col}" stroke="{INK}" stroke-opacity=".15" class="float" style="animation-delay:{i * .4:.1f}s"/></g></g>')
+    out.append(f'<text x="512" y="152" class="mono" font-size="10" fill="{MUTED}" letter-spacing=".08em">TOKENS</text>')
+    return "".join(out)
+
+
+def motif_ui(c):
+    return f"""<g class="fade" {d(.5)}>
+<rect x="388" y="72" width="176" height="96" rx="18" fill="{INK}" fill-opacity=".05" stroke="{INK}" stroke-opacity=".14"/>
+<circle cx="476" cy="120" r="70" fill="url(#spot)" class="roam"/>
+<rect x="404" y="88" width="72" height="24" rx="12" fill="{c}" fill-opacity=".15" stroke="{c}" stroke-opacity=".5"/>
+<text x="440" y="104" text-anchor="middle" class="mono" font-size="10" fill="{c}" letter-spacing=".06em">CHIP</text>
+<rect x="404" y="124" width="120" height="6" rx="3" fill="{INK}" opacity=".2"/><rect x="404" y="138" width="84" height="6" rx="3" fill="{INK}" opacity=".12"/>
+<g class="roam"><path d="M470 112 L470 134 L476 128 L482 140 L486 138 L480 126 L488 126 Z" fill="{INK}"/></g>
+</g>"""
+
+
+PACKAGES = [
+    ("theme", "Design tokens &amp; a Tailwind preset built on", "the ahmetakyapi.com visual language.", motif_theme),
+    ("ui", "React components — glass, chip, cursor,", "spotlight. Built on Framer Motion.", motif_ui),
+]
+
+
+def npm_card(i, name, l1, l2, motif):
+    W, H = 600, 320
+    cmd = f"npm i @ahmetakyapi/{name}"
+    cw = 8.4
+    tw = len(cmd) * cw
+    t0 = 1.2 + i * .3
+    css = f"""
+.type{{transform-box:view-box;transform-origin:0 0;animation:type {len(cmd) * .055:.2f}s steps({len(cmd)}) both}}
+@keyframes type{{from{{transform:scaleX(0)}}}}
+.caret{{animation:caret {len(cmd) * .055:.2f}s steps({len(cmd)}) both}}
+@keyframes caret{{from{{transform:translateX(-{tw:.1f}px)}}}}
+.float{{animation:float 3.6s ease-in-out infinite alternate}}
+@keyframes float{{to{{transform:translateY(-6px)}}}}
+.roam{{animation:roam 6s ease-in-out infinite alternate}}
+@keyframes roam{{0%{{transform:translate(-50px,-14px)}}50%{{transform:translate(30px,10px)}}100%{{transform:translate(60px,-8px)}}}}
+"""
+    defs = f"""<radialGradient id="spot"><stop offset="0" stop-color="{TEAL}" stop-opacity=".35"/><stop offset="1" stop-color="{TEAL}" stop-opacity="0"/></radialGradient>
+<clipPath id="typed"><rect x="56" y="252" width="{tw:.1f}" height="28" class="type" style="animation-delay:{t0:.2f}s;transform-origin:56px 0"/></clipPath>"""
+    body = f"""
+{masked("k1", 0, 18, 300, 40, f'<text x="32" y="44" class="mono" font-size="12" fill="#ff5f6d">(NPM)</text>', delay=.1)}
+{masked("k2", 300, 18, 300, 40, f'<text x="{W - 32}" y="44" text-anchor="end" class="mono" font-size="12" fill="{MUTED}">OPEN SOURCE · v2.1.0</text>', delay=.16)}
+{masked("n1", 0, 76, 380, 30, f'<text x="32" y="98" class="mono" font-size="15" fill="{MUTED}">@AHMETAKYAPI/</text>', delay=.25)}
+{masked("n2", 0, 104, 380, 92, f'<text x="28" y="176" class="serif" font-size="84" fill="{INK}">{name}</text>', cls="rise-xl", delay=.32)}
+{motif(TEAL)}
+{masked("d0", 0, 192, W, 26, f'<text x="32" y="211" class="sans" font-size="18" fill="{MUTED}">{l1}</text>', delay=.5)}
+{masked("d1", 0, 216, W, 26, f'<text x="32" y="235" class="sans" font-size="18" fill="{MUTED}">{l2}</text>', delay=.56)}
+<g class="fade-up" {d(.8)}>
+  <rect x="24" y="250" width="{W - 48}" height="44" rx="12" fill="{BG}" stroke="{INK}" stroke-opacity=".1"/>
+  <text x="40" y="277" class="mono" font-size="14" letter-spacing="0" fill="{TEAL}">$</text>
+  <g clip-path="url(#typed)"><text x="56" y="277" class="mono" font-size="14" letter-spacing="0" fill="{INK}" textLength="{tw:.1f}" lengthAdjust="spacingAndGlyphs">{cmd}</text></g>
+  <g class="caret" style="animation-delay:{t0:.2f}s"><rect x="{56 + tw + 2:.1f}" y="262" width="8" height="18" fill="{TEAL}" class="blink"/></g>
+  <text x="{W - 40}" y="277" text-anchor="end" class="mono" font-size="11" fill="{MUTED}">↗ NPMJS.COM</text>
+</g>
+"""
+    write(f"npm-{name}.svg", svg(W, H, body, css, defs, title=f"@ahmetakyapi/{name} on npm — {l1.replace('&amp;', '&')} {l2}"))
 
 
 # ================================================================ FOOTER ===
@@ -696,6 +760,8 @@ if __name__ == "__main__":
     work_header()
     for p in PROJECTS:
         project_card(*p)
+    for i, pk in enumerate(PACKAGES):
+        npm_card(i, *pk)
     footer()
     for i, b in enumerate(BUTTONS):
         button(i, *b)

@@ -31,6 +31,11 @@
   <a href="https://github.com/ahmetakyapi/dungeon-mates"><img src="assets/project-dungeon.svg" width="49%" alt="Dungeon Mates — a real-time co-op dungeon crawler" /></a>
 </p>
 
+<p>
+  <a href="https://www.npmjs.com/package/@ahmetakyapi/theme"><img src="assets/npm-theme.svg" width="49%" alt="@ahmetakyapi/theme on npm — design tokens and a Tailwind preset built on the ahmetakyapi.com visual language" /></a>
+  <a href="https://www.npmjs.com/package/@ahmetakyapi/ui"><img src="assets/npm-ui.svg" width="49%" alt="@ahmetakyapi/ui on npm — React components: glass, chip, cursor, spotlight" /></a>
+</p>
+
 <p align="center">
   <a href="https://ahmetakyapi.com"><b>See all 13 products on ahmetakyapi.com →</b></a>
 </p>

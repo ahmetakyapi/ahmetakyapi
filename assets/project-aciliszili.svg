@@ -66,7 +66,7 @@
 
 <rect width="600" height="470" fill="url(#glow)"/>
 <clipPath id="k1"><rect x="0" y="18" width="300" height="40"/></clipPath><g clip-path="url(#k1)"><g class="rise" style="animation-delay:0.10s"><text x="32" y="44" class="mono" font-size="12" fill="#4ade80">(01)</text></g></g>
-<clipPath id="k2"><rect x="300" y="18" width="300" height="40"/></clipPath><g clip-path="url(#k2)"><g class="rise" style="animation-delay:0.16s"><text x="568" y="44" text-anchor="end" class="mono" font-size="12" fill="#7d8aa0">FINANCE · 2026</text></g></g>
+<clipPath id="k2"><rect x="300" y="18" width="300" height="40"/></clipPath><g clip-path="url(#k2)"><g class="rise" style="animation-delay:0.16s"><text x="568" y="44" text-anchor="end" class="mono" font-size="12" fill="#7d8aa0">FINANCE · DAILY</text></g></g>
 <g clip-path="url(#stage)" class="fade" style="animation-delay:0.25s">
   <rect x="24" y="64" width="552" height="224" fill="#050a14" fill-opacity=".6"/>
   <g transform="translate(0 82)">
@@ -75,7 +75,7 @@
 <path d="M0 120 L40 104 L80 112 L120 82 L160 90 L200 60 L240 72 L280 40 L320 52 L360 24 L400 30 L440 8 L440 160 L0 160 Z" fill="url(#area)" opacity=".5"/>
 <path d="M0 120 L40 104 L80 112 L120 82 L160 90 L200 60 L240 72 L280 40 L320 52 L360 24 L400 30 L440 8" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" class="trace"/>
 <circle cx="440" cy="8" r="6" fill="#4ade80"/><circle cx="440" cy="8" r="6" fill="#4ade80" class="pulse"/>
-<text x="440" y="-2" dx="-14" text-anchor="end" class="mono" font-size="12" fill="#4ade80">+4.2%  09:30 ET</text>
+<text x="440" y="-2" dx="-14" text-anchor="end" class="mono" font-size="12" fill="#4ade80">US MARKETS · DAILY BULLETIN</text>
 </g></g>
 </g>
 <rect x="24.5" y="64.5" width="551" height="223" rx="16" fill="none" stroke="#e3e9f0" stroke-opacity=".08"/>

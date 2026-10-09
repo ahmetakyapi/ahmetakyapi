@@ -76,7 +76,7 @@
 <path id="ballpath" d="M180 150 C 240 40, 330 160, 420 70 S 500 120, 470 99" fill="none"/>
 <circle cx="180" cy="150" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:0.0s"/><circle cx="260" cy="70" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:0.4s"/><circle cx="330" cy="140" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:0.8s"/><circle cx="420" cy="70" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:1.2s"/><circle cx="380" cy="40" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:1.6s"/><circle cx="220" cy="120" r="6" fill="#a3e635" opacity=".85" class="float" style="animation-delay:2.0s"/>
 <circle r="7" fill="#e3e9f0"><animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#ballpath"/></animateMotion></circle>
-<text x="490" y="204" text-anchor="end" class="mono" font-size="12" fill="#a3e635">90'  ·  2 — 1</text></g>
+<text x="490" y="204" text-anchor="end" class="mono" font-size="12" fill="#a3e635">16 FRIENDS · 1 LEAGUE</text></g>
 </g>
 <rect x="24.5" y="64.5" width="551" height="223" rx="16" fill="none" stroke="#e3e9f0" stroke-opacity=".08"/>
 <clipPath id="t"><rect x="0" y="296" width="600" height="64"/></clipPath><g clip-path="url(#t)"><g class="rise" style="animation-delay:0.35s"><text x="30" y="344" class="sans" font-size="46" font-weight="600" letter-spacing="-.03em" fill="#e3e9f0">Eleven<tspan class="serif" font-weight="400" fill="#a3e635">Forge</tspan></text></g></g>
