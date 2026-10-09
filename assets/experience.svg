@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-label="Experience at Nar Sistem Teknoloji (energy): AI Developer, 2026–now; Full-Stack Developer, 2024–2026; Frontend Developer, 2021–2023. Plus R&amp;D and TÜBİTAK projects. Research, design QA, tests and copy run on AI agents I built.">
+<title>Experience at Nar Sistem Teknoloji (energy): AI Developer, 2026–now; Full-Stack Developer, 2024–2026; Frontend Developer, 2021–2023. Plus R&amp;D and TÜBİTAK projects. Research, design QA, tests and copy run on AI agents I built.</title>
+<defs>
+<clipPath id="card"><rect width="1200" height="600" rx="28"/></clipPath>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>
+<feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0"/>
+</filter>
+
+</defs>
+<style>
+.sans{font-family:'Inter','SF Pro Display','Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif}
+.serif{font-family:'Instrument Serif','Playfair Display','Iowan Old Style',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
+.mono{font-family:'JetBrains Mono','SF Mono',ui-monospace,Menlo,Consolas,'DejaVu Sans Mono',monospace;letter-spacing:.12em}
+.rise{animation:rise 1.1s cubic-bezier(.16,1,.3,1) both}
+.rise-xl{animation:rise-xl 1.3s cubic-bezier(.16,1,.3,1) both}
+.fade{animation:fade 1s ease both}
+.fade-up{animation:fade-up 1s cubic-bezier(.16,1,.3,1) both}
+.draw-x{transform-box:fill-box;transform-origin:0 50%;animation:draw-x 1.4s cubic-bezier(.76,0,.24,1) both}
+.draw-y{transform-box:fill-box;transform-origin:50% 0;animation:draw-y 1.4s cubic-bezier(.76,0,.24,1) both}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .9s cubic-bezier(.16,1,.3,1) both}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 18s linear infinite}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes rise{from{transform:translateY(80px)}}
+@keyframes rise-xl{from{transform:translateY(260px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}}
+@keyframes draw-x{from{transform:scaleX(0)}}
+@keyframes draw-y{from{transform:scaleY(0)}}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes blink{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<g clip-path="url(#card)">
+<rect width="1200" height="600" fill="#050a14"/>
+
+
+<clipPath id="hr3a"><rect x="0" y="40" width="600.0" height="40"/></clipPath><g clip-path="url(#hr3a)"><g class="rise" style="animation-delay:0.10s"><text x="56" y="68" class="mono" font-size="13" fill="#7d8aa0"><tspan fill="#5eead4">(03)</tspan>  EXPERIENCE</text></g></g>
+<clipPath id="hr3b"><rect x="600.0" y="40" width="600.0" height="40"/></clipPath><g clip-path="url(#hr3b)"><g class="rise" style="animation-delay:0.18s"><text x="1144" y="68" text-anchor="end" class="mono" font-size="13" fill="#7d8aa0">WHERE I WORK</text></g></g>
+<rect x="56" y="92" width="1088" height="1" fill="#e3e9f0" fill-opacity=".14" class="draw-x" style="animation-delay:0.20s"/>
+
+<clipPath id="h"><rect x="0" y="112" width="1200" height="96"/></clipPath><g clip-path="url(#h)"><g class="rise-xl" style="animation-delay:0.20s"><text x="56" y="186" class="sans" font-size="72" font-weight="600" letter-spacing="-.04em" fill="#e3e9f0">Five years in <tspan class="serif" font-weight="400" fill="#5eead4">energy.</tspan></text></g></g>
+<rect x="300" y="242" width="2" height="232" fill="#e3e9f0" fill-opacity=".14"/><rect x="300" y="242" width="2" height="232" fill="#5eead4" class="draw-y" style="animation-duration:2.2s;animation-delay:.6s"/><clipPath id="w0"><rect x="40" y="232" width="240" height="30"/></clipPath><g clip-path="url(#w0)"><g class="rise" style="animation-delay:0.70s"><text x="260" y="255" text-anchor="end" class="mono" font-size="12.5" fill="#7d8aa0">2026 — NOW</text></g></g><g class="pop" style="animation-delay:0.70s"><circle cx="301" cy="250" r="8" fill="#050a14" stroke="#5eead4" stroke-width="2"/><circle cx="301" cy="250" r="3.5" fill="#5eead4"/></g><circle class="pulse" cx="301" cy="250" r="7" fill="#5eead4"/><clipPath id="r0"><rect x="340" y="216" width="520" height="46"/></clipPath><g clip-path="url(#r0)"><g class="rise" style="animation-delay:0.75s"><text x="340" y="259" class="sans" font-size="32" font-weight="500" letter-spacing="-.02em" fill="#e3e9f0">AI Developer <tspan class="serif" fill="#5eead4">· Nar</tspan></text></g></g><clipPath id="s0"><rect x="340" y="268" width="560" height="30"/></clipPath><g clip-path="url(#s0)"><g class="rise" style="animation-delay:0.82s"><text x="340" y="290" class="sans" font-size="17" fill="#7d8aa0">Enterprise software for the energy sector.</text></g></g><clipPath id="w1"><rect x="40" y="340" width="240" height="30"/></clipPath><g clip-path="url(#w1)"><g class="rise" style="animation-delay:1.15s"><text x="260" y="363" text-anchor="end" class="mono" font-size="12.5" fill="#7d8aa0">2024 — 2026</text></g></g><g class="pop" style="animation-delay:1.15s"><circle cx="301" cy="358" r="8" fill="#050a14" stroke="#3b9cff" stroke-width="2"/><circle cx="301" cy="358" r="3.5" fill="#3b9cff"/></g><clipPath id="r1"><rect x="340" y="324" width="520" height="46"/></clipPath><g clip-path="url(#r1)"><g class="rise" style="animation-delay:1.20s"><text x="340" y="367" class="sans" font-size="32" font-weight="500" letter-spacing="-.02em" fill="#e3e9f0">Full-Stack Developer <tspan class="serif" fill="#3b9cff">· Nar</tspan></text></g></g><clipPath id="s1"><rect x="340" y="376" width="560" height="30"/></clipPath><g clip-path="url(#s1)"><g class="rise" style="animation-delay:1.27s"><text x="340" y="398" class="sans" font-size="17" fill="#7d8aa0">End-to-end features, from interface to system.</text></g></g><clipPath id="w2"><rect x="40" y="448" width="240" height="30"/></clipPath><g clip-path="url(#w2)"><g class="rise" style="animation-delay:1.60s"><text x="260" y="471" text-anchor="end" class="mono" font-size="12.5" fill="#7d8aa0">2021 — 2023</text></g></g><g class="pop" style="animation-delay:1.60s"><circle cx="301" cy="466" r="8" fill="#050a14" stroke="#8b7bff" stroke-width="2"/><circle cx="301" cy="466" r="3.5" fill="#8b7bff"/></g><clipPath id="r2"><rect x="340" y="432" width="520" height="46"/></clipPath><g clip-path="url(#r2)"><g class="rise" style="animation-delay:1.65s"><text x="340" y="475" class="sans" font-size="32" font-weight="500" letter-spacing="-.02em" fill="#e3e9f0">Frontend Developer <tspan class="serif" fill="#8b7bff">· Nar</tspan></text></g></g><clipPath id="s2"><rect x="340" y="484" width="560" height="30"/></clipPath><g clip-path="url(#s2)"><g class="rise" style="animation-delay:1.72s"><text x="340" y="506" class="sans" font-size="17" fill="#7d8aa0">Interfaces for enterprise energy products.</text></g></g>
+<rect x="892" y="228" width="1" height="160" fill="#e3e9f0" fill-opacity=".12" class="draw-y" style="animation-delay:1.50s"/>
+<clipPath id="sd0"><rect x="900" y="228" width="260" height="30"/></clipPath><g clip-path="url(#sd0)"><g class="rise" style="animation-delay:1.60s"><text x="912" y="250" class="mono" font-size="11.5" fill="#5eead4">AI-NATIVE WORKFLOW</text></g></g><clipPath id="sd1"><rect x="900" y="256" width="260" height="30"/></clipPath><g clip-path="url(#sd1)"><g class="rise" style="animation-delay:1.67s"><text x="912" y="278" class="sans" font-size="17" fill="#e3e9f0">Research, design QA, tests</text></g></g><clipPath id="sd2"><rect x="900" y="284" width="260" height="30"/></clipPath><g clip-path="url(#sd2)"><g class="rise" style="animation-delay:1.74s"><text x="912" y="306" class="sans" font-size="17" fill="#e3e9f0">and copy run on agents I</text></g></g><clipPath id="sd3"><rect x="900" y="312" width="260" height="30"/></clipPath><g clip-path="url(#sd3)"><g class="rise" style="animation-delay:1.81s"><text x="912" y="334" class="sans" font-size="17" fill="#e3e9f0">built. I decide what ships.</text></g></g><clipPath id="sd5"><rect x="900" y="368" width="260" height="30"/></clipPath><g clip-path="url(#sd5)"><g class="rise" style="animation-delay:1.95s"><text x="912" y="390" class="mono" font-size="11.5" fill="#7d8aa0">+ R&amp;D and TÜBİTAK projects</text></g></g>
+<rect x="56" y="536" width="1088" height="1" fill="#e3e9f0" fill-opacity=".1" class="draw-x" style="animation-delay:1.80s"/>
+<clipPath id="ft"><rect x="0" y="542" width="1200" height="34"/></clipPath><g clip-path="url(#ft)"><g class="rise" style="animation-delay:2.00s"><text x="56" y="566" class="mono" font-size="11.5" fill="#7d8aa0">NAR SISTEM TEKNOLOJI · ENERGY</text><text x="1144" y="566" text-anchor="end" class="mono" font-size="11.5" fill="#7d8aa0">2021 → TODAY</text></g></g>
+
+<rect width="1200" height="600" filter="url(#grain)" opacity=".05"/>
+</g>
+<rect x=".5" y=".5" width="1199" height="599" rx="28" fill="none" stroke="#e3e9f0" stroke-opacity=".08"/>
+</svg>

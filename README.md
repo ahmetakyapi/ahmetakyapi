@@ -1,34 +1,61 @@
-<div align="center">
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=6366F1&center=true&vCenter=true&width=520&lines=Frontend+%2F+Full-Stack+Developer;Angular+%C2%B7+Next.js+%C2%B7+TypeScript;Building+beautiful+things+%E2%9C%A6" alt="Typing SVG" />
-
-</div>
+<a href="https://ahmetakyapi.com">
+  <img src="assets/hero.svg" width="100%" alt="Ahmet Akyapı — Full-Stack & AI Developer, Istanbul. Currently AI Developer at Nar Sistem Teknoloji." />
+</a>
 
 <br/>
 
-Hey, I'm **Ahmet Akyapı** — a frontend-focused full-stack developer based in **Istanbul, Turkey**.
-
-I'm currently working as a Frontend Developer at [**Nar**](https://nar.com.tr/en), where I build clean, well-crafted interfaces with smooth animations and a strong attention to detail. I mainly work with **Angular** on the frontend, while also creating full-stack applications with **Next.js** and **TypeScript**. I've also published a few open-source packages. Always chasing that perfect pixel.
-
-- 🌐 &nbsp;[ahmetakyapi.com](https://ahmetakyapi.com)
-- 📦 &nbsp;[npm — @ahmetakyapi/theme](https://www.npmjs.com/package/@ahmetakyapi/theme) &nbsp;·&nbsp; [@ahmetakyapi/ui](https://www.npmjs.com/package/@ahmetakyapi/ui)
-- 𝕏 &nbsp;[Twitter](https://twitter.com/ahmetakyapi)
-- 💼 &nbsp;[LinkedIn](https://www.linkedin.com/in/ahmet-akyap%C4%B1-ba9911193)
+<img src="assets/about.svg" width="100%" alt="About — I build web products end to end: designing the interface and the system, then shipping it. From enterprise energy systems to my own products, I chase work that's fast, clear and correct." />
 
 <br/>
 
-**Tech I work with:**
-
-<img src="https://skillicons.dev/icons?i=angular,ts,nextjs,react,tailwind,nodejs,postgres,figma&theme=dark&perline=8" alt="Tech Stack" />
+<img src="assets/stack.svg" width="100%" alt="Toolkit — Next.js, React, TypeScript, Angular, Tailwind CSS, Node.js, PostgreSQL (Neon), Drizzle ORM, Socket.io, Vitest, AI agents, Claude, Vercel, Figma, Git." />
 
 <br/>
+
+<img src="assets/experience.svg" width="100%" alt="Experience at Nar Sistem Teknoloji (energy): AI Developer 2026–now, Full-Stack Developer 2024–2026, Frontend Developer 2021–2023. Plus R&D and TÜBİTAK projects." />
+
 <br/>
+
+<img src="assets/work.svg" width="100%" alt="Selected work" />
+
+<p>
+  <a href="https://aciliszili.com"><img src="assets/project-aciliszili.svg" width="49%" alt="Açılış Zili — US markets, tracked in Turkish" /></a>
+  <a href="https://digy-notes.vercel.app"><img src="assets/project-digynotes.svg" width="49%" alt="DigyNotes — a personal log for films, books, games and places" /></a>
+</p>
+<p>
+  <a href="https://derinay.vercel.app"><img src="assets/project-derinay.svg" width="49%" alt="Derinay — a calm panel for a one-person clinical practice" /></a>
+  <a href="https://elevenforge.vercel.app"><img src="assets/project-elevenforge.svg" width="49%" alt="ElevenForge — multiplayer online football manager" /></a>
+</p>
+<p>
+  <a href="https://onepiece-hub.vercel.app"><img src="assets/project-onepiece.svg" width="49%" alt="One Piece Hub — a spoiler-safe Turkish wiki" /></a>
+  <a href="https://github.com/ahmetakyapi/dungeon-mates"><img src="assets/project-dungeon.svg" width="49%" alt="Dungeon Mates — a real-time co-op dungeon crawler" /></a>
+</p>
+
+<p align="center">
+  <a href="https://ahmetakyapi.com"><b>See all 13 products on ahmetakyapi.com →</b></a>
+</p>
+
+<br/>
+
+<a href="mailto:ahmetakyapii@gmail.com">
+  <img src="assets/footer.svg" width="100%" alt="Let's work together — ahmetakyapii@gmail.com" />
+</a>
+
+<p align="center">
+  <a href="https://ahmetakyapi.com"><img src="assets/btn-website.svg" height="52" alt="Website" /></a>
+  <a href="mailto:ahmetakyapii@gmail.com"><img src="assets/btn-email.svg" height="52" alt="Email" /></a>
+  <a href="https://x.com/ahmetakyapi"><img src="assets/btn-x.svg" height="52" alt="X / Twitter" /></a>
+  <a href="https://www.linkedin.com/in/ahmetakyapi"><img src="assets/btn-linkedin.svg" height="52" alt="LinkedIn" /></a>
+  <a href="https://github.com/ahmetakyapi?tab=repositories"><img src="assets/btn-github.svg" height="52" alt="GitHub repositories" /></a>
+</p>
 
 <details>
 <summary>📊 &nbsp;GitHub Stats</summary>
 <br/>
 
-<img height="155" src="https://github-readme-stats.vercel.app/api?username=ahmetakyapi&show_icons=true&hide_border=true&theme=transparent&title_color=6366f1&icon_color=6366f1&text_color=c9d1d9&count_private=true" alt="GitHub Stats" />
-<img height="155" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ahmetakyapi&layout=compact&hide_border=true&theme=transparent&title_color=6366f1&text_color=c9d1d9&langs_count=8" alt="Most Used Languages" />
+<img height="155" src="https://github-readme-stats.vercel.app/api?username=ahmetakyapi&show_icons=true&hide_border=true&theme=transparent&title_color=5eead4&icon_color=3b9cff&text_color=7d8aa0&count_private=true" alt="GitHub Stats" />
+<img height="155" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ahmetakyapi&layout=compact&hide_border=true&theme=transparent&title_color=5eead4&text_color=7d8aa0&langs_count=8" alt="Most Used Languages" />
 
 </details>
+
+<!-- Every image above is generated by scripts/generate.py — edit the data there and re-run it. -->
